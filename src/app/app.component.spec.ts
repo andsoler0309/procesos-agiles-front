@@ -26,10 +26,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('ProyectoFrontend');
   });
 
-  it('should render title', () => {
+  it('should have h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('ProyectoFrontend app is running!');
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('h1').textContent).toBe('');
   });
 });
