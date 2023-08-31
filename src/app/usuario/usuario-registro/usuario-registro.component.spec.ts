@@ -4,6 +4,9 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { UsuarioRegistroComponent } from './usuario-registro.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('UsuarioRegistroComponent', () => {
   let component: UsuarioRegistroComponent;
@@ -11,6 +14,7 @@ describe('UsuarioRegistroComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ ReactiveFormsModule, ToastrModule.forRoot(), HttpClientTestingModule ],
       declarations: [ UsuarioRegistroComponent ]
     })
     .compileComponents();
