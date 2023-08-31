@@ -12,9 +12,10 @@ import { RecetaModule } from './receta/receta.module';
 import { IngredienteModule } from './ingrediente/ingrediente.module';
 import { RecetaIngredienteModule } from './receta-ingrediente/receta-ingrediente.module';
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

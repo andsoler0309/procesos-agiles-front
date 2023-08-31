@@ -7,7 +7,7 @@ import { EncabezadoComponent } from './encabezado/encabezado.component';
     CommonModule
   ],
   declarations: [
-      EncabezadoComponent
+    EncabezadoComponent
    ],
   exports: [
     EncabezadoComponent
