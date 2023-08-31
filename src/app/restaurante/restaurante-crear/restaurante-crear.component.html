@@ -1,0 +1,44 @@
+<app-encabezado></app-encabezado>
+<h3>
+  Nuevo Restaurante
+</h3>
+
+
+<form
+ [formGroup]="restauranteForm"
+ (ngSubmit)="!restauranteForm.invalid && crearRestaurante(restauranteForm.value)"
+>
+  <div class="row">
+    <div class="col col-">
+      <!--Nombre-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="nombre">Nombre</label>
+        <input
+          novalidate
+          id="nombre"
+          class="form-control"
+          formControlName="nombre"
+          placeholder="Nombre"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            restauranteForm.get('nombre')!.hasError('required') &&
+            restauranteForm.get('nombre')!.touched
+          "
+        >
+          Contenido requerido
+        </div>
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="restauranteForm.get('nombre')!.hasError('minlength')"
+        >
+          El contenido es muy corto, debe tener al menos dos caracteres.
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <button type="submit" class="btn btn-primary" [disabled]="!restauranteForm.valid">Crear</button>&nbsp;
+  <button type="button" class="btn btn-danger ml-3" (click)="cancelarRestaurante()">Cancelar</button>
+</form>
