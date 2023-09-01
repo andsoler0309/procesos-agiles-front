@@ -12,6 +12,7 @@ import { RecetaModule } from './receta/receta.module';
 import { IngredienteModule } from './ingrediente/ingrediente.module';
 import { RecetaIngredienteModule } from './receta-ingrediente/receta-ingrediente.module';
 import { MenuSemanaModule } from './menu-semana/menu-semana.module';
+import { RestauranteModule } from './restaurante/restaurante.module';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { MenuSemanaModule } from './menu-semana/menu-semana.module';
     IngredienteModule,
     RecetaIngredienteModule,
     MenuSemanaModule,
+    RestauranteModule,
     ToastrModule.forRoot({
       timeOut: 7000,
       positionClass: 'toast-bottom-right',
