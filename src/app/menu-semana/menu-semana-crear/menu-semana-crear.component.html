@@ -1,1 +1,46 @@
-<p>menu-semana-crear works!</p>
+<div class="container mt-5">
+    <form
+    [formGroup]="menuForm"
+    (ngSubmit)="!menuForm.invalid && crearMenu(menuForm.value)"
+    >
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input 
+            formControlName="nombre"
+            type="text" 
+            class="form-control" 
+            id="nombre" 
+            placeholder="Nombre del menu">
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+          menuForm.get('nombre')!.hasError('required') &&
+          menuForm.get('nombre')!.touched
+          "
+        >
+          Contenido requerido
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="fechaInicial" class="form-label">Fecha Inicial</label>
+        <input 
+            formControlName="fechaInicial"
+            type="date" 
+            class="form-control" 
+            id="fechaInicial">
+      </div>
+  
+      <div class="mb-3">
+        <label for="fechaFinal" class="form-label">Fecha Final</label>
+        <input
+            formControlName="fechaFinal" 
+            type="date" 
+            class="form-control" 
+            id="fechaFinal"
+            >
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!menuForm.valid">Crear</button>&nbsp;
+  
+    </form>
+  </div>
