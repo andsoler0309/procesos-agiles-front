@@ -1,8 +1,35 @@
 <app-encabezado></app-encabezado>
-<h3>
-  listar Restaurantes
-</h3>
+<div class="row">
+  <div class="col col-6">
+    <div class="container-table">
+      <div class="header-tabla-restaurante">
+          Restaurantes
+      </div>
 
-<div class="card-header">
-  Mis restaurantes <button type="button" class="btn btn-warning" (click)="crearRestaurante()"><i class="bi bi-plus-circle"></i></button>
+      <ng-container *ngIf="restaurantes.length === 0; else restauranteTable">
+        <p>Aun no se ha creado ningún restaurante</p>
+      </ng-container>
+
+      <ng-template #restauranteTable>
+        <table class="tabla-restaurante">
+          <thead>
+            <th>Nombre</th>
+            <th>Acciones</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let restaurante of restaurantes">
+              <td>{{restaurante.nombre}}</td>
+              <td>
+                <button [disabled]="false" type="button" class="btn btn-warning"><i class="bi bi-pencil"></i></button>&nbsp;
+                <button [disabled]="false" type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </ng-template>
+
+      <div class="footer-tabla-restaurante">
+        <button type="button" class="btn btn-primary" (click)="crearRestaurante()">Crear restaurante</button>
+      </div>
 </div>
