@@ -14,7 +14,7 @@ export class RestauranteListaComponent implements OnInit {
   restaurantes:Array<Restaurante> = []
 
   constructor(
-    private router: Router,
+    private routerPath: Router,
     private restauranteService: RestauranteService,
     private toastr: ToastrService
   ) { }
@@ -34,6 +34,10 @@ export class RestauranteListaComponent implements OnInit {
         this.toastr.error("Error","Ha ocurrido un error. " + error.message)
       }
     });
+  }
+
+  crearRestaurante():void {
+    this.routerPath.navigate(['/restaurantes/crear/']);
   }
 
 }

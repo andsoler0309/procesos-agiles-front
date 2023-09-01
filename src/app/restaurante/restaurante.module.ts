@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { EncabezadoAppModule } from '../encabezado-app/encabezado-app.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RestauranteListaComponent } from './restaurante-lista/restaurante-lista.component';
+import { RestauranteCrearComponent } from './restaurante-crear/restaurante-crear.component';
 
 @NgModule({
   imports: [
@@ -11,9 +12,11 @@ import { RestauranteListaComponent } from './restaurante-lista/restaurante-lista
     EncabezadoAppModule
   ],
   declarations: [
+    RestauranteCrearComponent,
     RestauranteListaComponent,
   ],
   exports: [
+    RestauranteCrearComponent,
     RestauranteListaComponent,
   ]
 })
