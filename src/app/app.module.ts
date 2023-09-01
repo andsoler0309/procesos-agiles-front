@@ -12,7 +12,7 @@ import { RecetaModule } from './receta/receta.module';
 import { IngredienteModule } from './ingrediente/ingrediente.module';
 import { RecetaIngredienteModule } from './receta-ingrediente/receta-ingrediente.module';
 import { RestauranteModule } from './restaurante/restaurante.module';
-
+import { ChefModule } from './chef/chef.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +26,7 @@ import { RestauranteModule } from './restaurante/restaurante.module';
     ReactiveFormsModule,
     UsuarioModule,
     RecetaModule,
+    ChefModule,
     IngredienteModule,
     RecetaIngredienteModule,
     RestauranteModule,
