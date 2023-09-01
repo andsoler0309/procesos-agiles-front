@@ -8,6 +8,7 @@ import { Restaurante } from '../restaurante';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RestauranteService } from '../restaurante.service';
 import { EncabezadoAppModule } from 'src/app/encabezado-app/encabezado-app.module';
+import { Usuario } from 'src/app/usuario/usuario';
 
 describe('RestauranteListaComponent', () => {
   let component: RestauranteListaComponent;
@@ -26,17 +27,23 @@ describe('RestauranteListaComponent', () => {
     fixture = TestBed.createComponent(RestauranteListaComponent);
     component = fixture.componentInstance;
 
+    const usuario_test = new Usuario('admin', 'admin');
     component.restaurantes = [
       new Restaurante(
         1,
         'Restaurante 1',
-        'Direccion 1',
-        'Telefono 1',
-        'Facebook 1',
-        'Instagram 1',
-        'Twitter 1',
-        'Tipo Comida 1',
-        ['Aplicacion 1', 'Aplicacion 2']
+        'Calle 1',
+        '1234567',
+        'facebook',
+        'twitter',
+        'instagram',
+        '8:00 - 18:00',
+        true,
+        true,
+        'comida',
+        true,
+        true,
+        usuario_test
       )
     ];
 
