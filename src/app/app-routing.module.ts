@@ -8,8 +8,8 @@ import { RecetaEditarComponent } from './receta/receta-editar/receta-editar.comp
 import { IngredienteListaComponent } from './ingrediente/ingrediente-lista/ingrediente-lista.component';
 import { IngredienteCrearComponent } from './ingrediente/ingrediente-crear/ingrediente-crear.component';
 import { IngredienteEditarComponent } from './ingrediente/ingrediente-editar/ingrediente-editar.component';
-import { RestauranteCrearComponent } from './restaurante/restaurante-crear/restaurante-crear.component';
 import { RestauranteListaComponent } from './restaurante/restaurante-lista/restaurante-lista.component';
+import { RestauranteCrearComponent } from './restaurante/restaurante-crear/restaurante-crear.component';
 
 const routes: Routes = [
   { path: '', component: UsuarioLoginComponent, pathMatch: 'full' },

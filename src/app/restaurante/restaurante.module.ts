@@ -1,25 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
 import { EncabezadoAppModule } from '../encabezado-app/encabezado-app.module';
-import { RestauranteCrearComponent } from './restaurante-crear/restaurante-crear.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RestauranteListaComponent } from './restaurante-lista/restaurante-lista.component';
-
-
+import { RestauranteCrearComponent } from './restaurante-crear/restaurante-crear.component';
 
 @NgModule({
-  declarations: [
-    RestauranteCrearComponent,
-    RestauranteListaComponent
-  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     EncabezadoAppModule
   ],
+  declarations: [
+    RestauranteCrearComponent,
+    RestauranteListaComponent,
+  ],
   exports: [
     RestauranteCrearComponent,
-    RestauranteListaComponent
+    RestauranteListaComponent,
   ]
 })
 export class RestauranteModule { }
