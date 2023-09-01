@@ -52,3 +52,7 @@ td {
   padding: 10px;
   border-bottom: 1px solid #ddd;
 }
+
+tbody tr:hover {
+  background-color: #f8f8f8;
+}
