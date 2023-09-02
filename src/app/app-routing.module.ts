@@ -12,6 +12,8 @@ import { MenuSemanaCrearComponent } from './menu-semana/menu-semana-crear/menu-s
 import { RestauranteCrearComponent } from './restaurante/restaurante-crear/restaurante-crear.component';
 import { RestauranteListaComponent } from './restaurante/restaurante-lista/restaurante-lista.component';
 import { MenuSemanaListarComponent } from './menu-semana/menu-semana-listar/menu-semana-listar.component';
+import { ChefCrearComponent } from './chef/chef-crear/chef-crear.component';
+
 
 const routes: Routes = [
   { path: '', component: UsuarioLoginComponent, pathMatch: 'full' },
@@ -26,7 +28,8 @@ const routes: Routes = [
   { path: 'menu-semana/crear', component: MenuSemanaCrearComponent, pathMatch: 'full'},
   { path: 'restaurantes', component: RestauranteListaComponent, pathMatch: 'full'},
   { path: 'restaurantes/crear', component: RestauranteCrearComponent, pathMatch: 'full'},
-
+  { path: 'chefs', component: ChefCrearComponent, pathMatch: 'full'},
+  { path: 'chefs/crear', component: ChefCrearComponent, pathMatch: 'full'},
 ];
 
 @NgModule({
