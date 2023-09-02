@@ -11,6 +11,7 @@ import { IngredienteEditarComponent } from './ingrediente/ingrediente-editar/ing
 import { MenuSemanaCrearComponent } from './menu-semana/menu-semana-crear/menu-semana-crear.component';
 import { RestauranteCrearComponent } from './restaurante/restaurante-crear/restaurante-crear.component';
 import { RestauranteListaComponent } from './restaurante/restaurante-lista/restaurante-lista.component';
+import { MenuSemanaListarComponent } from './menu-semana/menu-semana-listar/menu-semana-listar.component';
 
 const routes: Routes = [
   { path: '', component: UsuarioLoginComponent, pathMatch: 'full' },
@@ -21,9 +22,11 @@ const routes: Routes = [
   { path: 'ingredientes', component: IngredienteListaComponent, pathMatch: 'full'},
   { path: 'ingrediente/crear', component: IngredienteCrearComponent, pathMatch: 'full'},
   { path: 'ingrediente/editar/:id', component: IngredienteEditarComponent, pathMatch: 'full'},
+  { path: 'menu-semana', component: MenuSemanaListarComponent, pathMatch: 'full'},
   { path: 'menu-semana/crear', component: MenuSemanaCrearComponent, pathMatch: 'full'},
   { path: 'restaurantes', component: RestauranteListaComponent, pathMatch: 'full'},
   { path: 'restaurantes/crear', component: RestauranteCrearComponent, pathMatch: 'full'},
+
 ];
 
 @NgModule({
