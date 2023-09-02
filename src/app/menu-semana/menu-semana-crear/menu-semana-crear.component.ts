@@ -88,4 +88,13 @@ export class MenuSemanaCrearComponent {
     this.menuForm.get('fechaFinal').setValue(`${ano}-${mes}-${dia}`);
     
   }
+
+  cancelarMenu(): void {
+    this.menuForm.reset();
+    this.routerPath.navigate(['/menu-semana/crear']);
+  }
+
+  eliminarIngrediente(indice: number): void {
+    this.recetaSubForm.removeAt(indice)
+  }
 }
