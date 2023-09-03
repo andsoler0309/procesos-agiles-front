@@ -91,7 +91,7 @@
       <!--Restaurante-->
       <div class="form-group mx-sm-3 mb-2">
         <label for="restaurante_id">Restaurante</label>
-        <select class="form-select"  formControlName="restaurante_id">
+        <select id="restaurante_id" class="form-select"  formControlName="restaurante_id">
           <option value="">Elegir restaurante</option>
           <option *ngFor="let restaurante of restaurantes" [ngValue]="restaurante.id">
             {{ restaurante.nombre }}
