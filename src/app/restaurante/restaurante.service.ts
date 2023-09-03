@@ -14,6 +14,7 @@ export class RestauranteService {
   ) { }
 
   traerRestaurantes(): Observable<Restaurante[]> {
+    
     const idUsuario = sessionStorage.getItem('idUsuario');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${sessionStorage.getItem('token')}`
