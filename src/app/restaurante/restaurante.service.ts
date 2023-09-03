@@ -20,4 +20,12 @@ export class RestauranteService {
     })
     return this.http.get<Restaurante[]>(`${this.apiUrl}/restaurantes/${idUsuario}`, { headers: headers })
   }
+
+  crearRestaurante( restaurante: Restaurante): Observable<Restaurante> {
+    const idUsuario = sessionStorage.getItem('idUsuario');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+    })
+    return this.http.post<Restaurante>(`${this.apiUrl}/restaurantes/${idUsuario}`,restaurante, { headers: headers })
+  }
 }
