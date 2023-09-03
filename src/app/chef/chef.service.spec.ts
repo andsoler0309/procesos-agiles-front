@@ -18,7 +18,7 @@ describe('ChefService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('Should return chef id from Http post call.',  inject([ChefService],(service: ChefService)  => {
+  it('Should create chef from Http post call.',  inject([ChefService],(service: ChefService)  => {
     service.crearChef(
       new Chef(0, "", "", "")
     )
