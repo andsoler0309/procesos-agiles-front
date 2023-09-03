@@ -70,7 +70,7 @@ export class RecetaListaComponent implements OnInit {
   }
 
   caloriasPorcion(receta: Receta):number {
-    let calorias: number = 0
+    let calorias = 0
     for (let i = 0; i < receta.ingredientes.length; i++) {
       calorias = calorias + receta.ingredientes[i].cantidad * receta.ingredientes[i].ingrediente.calorias
     }
