@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChefCrearComponent } from './chef-crear.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { EncabezadoAppModule } from 'src/app/encabezado-app/encabezado-app.module';
+import { ToastrModule } from 'ngx-toastr';
 
 describe('ChefCrearComponent', () => {
   let component: ChefCrearComponent;
@@ -8,6 +13,18 @@ describe('ChefCrearComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        EncabezadoAppModule,
+        ToastrModule.forRoot({
+          timeOut: 7000,
+          positionClass: 'toast-bottom-right',
+          preventDuplicates: true,
+        })
+      ],
       declarations: [ ChefCrearComponent ]
     })
     .compileComponents();
