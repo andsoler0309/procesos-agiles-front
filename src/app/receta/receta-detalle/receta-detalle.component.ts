@@ -33,7 +33,7 @@ export class RecetaDetalleComponent implements OnInit {
   }
 
   costoPreparacion():number {
-    let costo: number = 0
+    let costo = 0
     for (let i = 0; i < this.recetaDetalle.ingredientes.length; i++) {
       costo = costo + this.recetaDetalle.ingredientes[i].ingrediente.costo * this.factor * this.recetaDetalle.ingredientes[i].cantidad
     }
@@ -42,7 +42,7 @@ export class RecetaDetalleComponent implements OnInit {
   }
 
   caloriasPorcion():number {
-    let calorias: number = 0
+    let calorias = 0
     for (let i = 0; i < this.recetaDetalle.ingredientes.length; i++) {
       calorias = calorias + this.recetaDetalle.ingredientes[i].cantidad * this.recetaDetalle.ingredientes[i].ingrediente.calorias
     }

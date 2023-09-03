@@ -12,7 +12,7 @@ import { UsuarioService } from '../usuario.service';
 
 export class UsuarioLoginComponent implements OnInit {
 
-  error: string = "";
+  error = "";
   helper = new JwtHelperService();
 
   constructor(

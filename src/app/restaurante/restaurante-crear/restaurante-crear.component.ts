@@ -13,7 +13,7 @@ import { RestauranteService } from '../restaurante.service';
 export class RestauranteCrearComponent implements OnInit{
 
   restauranteForm: FormGroup;
-  didi : boolean = false;
+  didi  = false;
 
    constructor(
     private formBuilder: FormBuilder,
