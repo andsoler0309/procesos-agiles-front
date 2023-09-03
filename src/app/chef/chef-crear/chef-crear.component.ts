@@ -13,7 +13,7 @@ import { Restaurante } from 'src/app/restaurante/restaurante';
   styleUrls: ['./chef-crear.component.css']
 })
 export class ChefCrearComponent implements OnInit {
-  
+
   chefForm: FormGroup;
   restaurantes:Array<Restaurante> = []
 
@@ -24,7 +24,7 @@ export class ChefCrearComponent implements OnInit {
     private chefService: ChefService,
     private restauranteService: RestauranteService,
   ) {
-    
+
    }
 
 
@@ -40,7 +40,6 @@ export class ChefCrearComponent implements OnInit {
   }
 
   crearChef(nuevoChef: Chef): void {
-    alert(nuevoChef.restaurante_id)
     this.chefService.crearChef(nuevoChef).subscribe(() => {
       this.toastr.success("Confirmation", "Registro creado")
       this.chefForm.reset();
