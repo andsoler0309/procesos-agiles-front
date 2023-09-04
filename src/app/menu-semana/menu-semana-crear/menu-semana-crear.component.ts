@@ -6,6 +6,8 @@ import { MenuSemana } from '../menu-semana';
 import { RecetaService } from 'src/app/receta/receta.service';
 import { Receta } from 'src/app/receta/receta';
 import { MenuSemanaService } from '../menu-semana.service';
+import { RestauranteService } from 'src/app/restaurante/restaurante.service';
+import { Restaurante } from 'src/app/restaurante/restaurante';
 
 @Component({
   selector: 'app-menu-semana-crear',
@@ -16,13 +18,15 @@ export class MenuSemanaCrearComponent {
   menuForm: FormGroup;
   recetaSubForm: FormArray;
   recetas: Receta[] = [];
+  restaurantes: Restaurante[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
     private routerPath: Router,
     private toastr: ToastrService,
     private recetaService: RecetaService,
-    private menuSemanaService: MenuSemanaService) {
+    private menuSemanaService: MenuSemanaService,
+    private restaranteService: RestauranteService) {
 
   }
 
@@ -33,13 +37,13 @@ export class MenuSemanaCrearComponent {
       })
     ])
     this.menuForm = this.formBuilder.group({
-      nombre: ["", [Validators.required, Validators.minLength(2)]],
+      nombre: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(200)]],
       fechaInicial: ["", Validators.required],
       fechaFinal: ["", Validators.required],
-      recetas: this.recetaSubForm
+      recetas: this.recetaSubForm,
+      restaurante: ["", Validators.required]
     });
     this.darRecetas();
-    console.log("on init");
   }
   
 
@@ -67,6 +71,15 @@ export class MenuSemanaCrearComponent {
   darRecetas(): void {
     this.recetaService.darRecetas().subscribe((recetas) => {
         this.recetas = recetas;
+        if(this.recetas.length == 0){
+          this.toastr.error("Error","No hay recetas registradas")
+        }
+    })
+  }
+
+  darRestaurantes(): void {
+    this.restaranteService.traerRestaurantes().subscribe((restaurantes) => {
+      this.restaurantes = restaurantes;
     })
   }
 

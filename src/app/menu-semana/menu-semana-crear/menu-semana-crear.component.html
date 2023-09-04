@@ -46,8 +46,8 @@
             >
       </div>
     </div>
-      <div class="col col-6 form-group">
-        <h6>Recetas</h6>
+    <div class="col col-6 form-group">
+      <h6>Recetas</h6>
       <ng-container formArrayName="recetas">
         <ng-container *ngFor="let lineaForm of recetaSubForm.controls; let index = index">
           <div [formGroupName]="index">
@@ -74,6 +74,27 @@
         <button type="button" class="btn btn-info ml-3" (click)="adicionarReceta()"><i class="bi bi-plus-circle"></i></button>
 
       </div>
+    </div>
+
+    <div class="col col-6 form-group">
+      <h6>Restaurante</h6>
+      <ng-container formArrayName="recetas">
+        <ng-container *ngFor="let lineaForm of recetaSubForm.controls; let index = index">
+          <div [formGroupName]="index">
+            <div class="row">
+              <div class="col col-7">
+                <select
+                formControlName="id"
+                class="form-control"
+                >
+                    <option [ngValue]="null" disabled>Elegir restaurante</option>
+                    <option *ngFor="let restaurante of restaurantes" [ngValue]="restaurante.id">{{restaurante.nombre}} </option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
     </div>
 </div>
       <button type="submit" class="btn btn-primary" [disabled]="!menuForm.valid">Crear</button>&nbsp;
