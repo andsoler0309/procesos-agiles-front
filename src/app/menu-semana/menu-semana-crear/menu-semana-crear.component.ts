@@ -41,13 +41,15 @@ export class MenuSemanaCrearComponent {
       fechaInicial: ["", Validators.required],
       fechaFinal: ["", Validators.required],
       recetas: this.recetaSubForm,
-      restaurante: ["", Validators.required]
+      id_restaurante: ["", Validators.required]
     });
     this.darRecetas();
+    this.darRestaurantes();
   }
   
 
   crearMenu(menu: MenuSemana): void {
+    console.log(menu);
     this.menuSemanaService.crearMenuSemana(menu).subscribe((menu) => {
       this.toastr.success("Confirmation", "Registro creado")
       this.menuForm.reset();
