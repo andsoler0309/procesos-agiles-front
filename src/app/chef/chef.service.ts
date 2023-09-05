@@ -23,4 +23,11 @@ export class ChefService {
     })
     return this.http.post<Chef>(`${this.apiUrl}/chefs/${idUsuario}`, chef, { headers: headers })
   }
+
+  traerChefs(): Observable<Chef[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+    })
+    return this.http.get<Chef[]>(`${this.apiUrl}/chefs`, { headers: headers })
+  }
 }
