@@ -84,6 +84,7 @@
             formControlName="id_restaurante"
             class="form-control"
             >
+            
                 <option [ngValue]="null" disabled>Elegir restaurante</option>
                 <option *ngFor="let restaurante of restaurantes" [ngValue]="restaurante.id">{{restaurante.nombre}} </option>
             </select>
