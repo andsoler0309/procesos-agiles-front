@@ -11,6 +11,7 @@ import { IngredienteEditarComponent } from './ingrediente/ingrediente-editar/ing
 import { RestauranteListaComponent } from './restaurante/restaurante-lista/restaurante-lista.component';
 import { RestauranteCrearComponent } from './restaurante/restaurante-crear/restaurante-crear.component';
 import { ChefCrearComponent } from './chef/chef-crear/chef-crear.component';
+import { ChefListaComponent } from './chef/chef-lista/chef-lista.component';
 
 const routes: Routes = [
   { path: '', component: UsuarioLoginComponent, pathMatch: 'full' },
@@ -23,7 +24,7 @@ const routes: Routes = [
   { path: 'ingrediente/editar/:id', component: IngredienteEditarComponent, pathMatch: 'full'},
   { path: 'restaurantes', component: RestauranteListaComponent, pathMatch: 'full'},
   { path: 'restaurantes/crear', component: RestauranteCrearComponent, pathMatch: 'full'},
-  { path: 'chefs', component: ChefCrearComponent, pathMatch: 'full'},
+  { path: 'chefs', component: ChefListaComponent, pathMatch: 'full'},
   { path: 'chefs/crear', component: ChefCrearComponent, pathMatch: 'full'},
 ];
 
