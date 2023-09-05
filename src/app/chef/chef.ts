@@ -1,3 +1,5 @@
+
+import { RecetaIngrediente } from '../receta-ingrediente/receta-ingrediente';
 import { Restaurante } from '../restaurante/restaurante';
 
 export class Chef {

@@ -24,6 +24,7 @@ export class UsuarioLoginComponent implements OnInit {
     sessionStorage.setItem('decodedToken', '');
     sessionStorage.setItem('token', '');
     sessionStorage.setItem('idUsuario', '');
+    sessionStorage.setItem('rol', '');
   }
 
   loginUsuario(usuario: string, contrasena: string) {
