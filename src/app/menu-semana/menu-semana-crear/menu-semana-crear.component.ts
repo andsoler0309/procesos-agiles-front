@@ -19,6 +19,7 @@ export class MenuSemanaCrearComponent {
   recetaSubForm: FormArray;
   recetas: Receta[] = [];
   restaurantes: Restaurante[] = [];
+  rol: string = sessionStorage.getItem('rol');
 
   constructor(
     private formBuilder: FormBuilder,
@@ -41,12 +42,12 @@ export class MenuSemanaCrearComponent {
       fechaInicial: ["", Validators.required],
       fechaFinal: ["", Validators.required],
       recetas: this.recetaSubForm,
-      id_restaurante: ["", Validators.required]
+      id_restaurante: ["", this.rol==='ADMINISTRADOR' ? Validators.required : null]
     });
     this.darRecetas();
     this.darRestaurantes();
   }
-  
+
 
   crearMenu(menu: MenuSemana): void {
     console.log(menu);
