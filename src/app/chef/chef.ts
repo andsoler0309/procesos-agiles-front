@@ -1,15 +1,17 @@
+
 import { RecetaIngrediente } from '../receta-ingrediente/receta-ingrediente';
+import { Restaurante } from '../restaurante/restaurante';
 
 export class Chef {
     id: number;
     nombre: string;
     usuario: string;
-    restaurante_id: string;
+    restaurante: Restaurante;
 
-    public constructor(id: number, nombre: string, usuario: string, restaurante_id: string) {
+    public constructor(id: number, nombre: string, usuario: string, restaurante: Restaurante) {
         this.id = id;
         this.nombre = nombre;
         this.usuario = usuario;
-        this.restaurante_id = restaurante_id;
+        this.restaurante = restaurante;
     }
 }

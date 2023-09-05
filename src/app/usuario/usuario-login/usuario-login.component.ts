@@ -32,6 +32,7 @@ export class UsuarioLoginComponent implements OnInit {
 
     this.usuarioService.login(usuario, contrasena)
       .subscribe(res => {
+        console.log(res)
         sessionStorage.setItem('decodedToken', this.helper.decodeToken(res.token));
         sessionStorage.setItem('token', res.token);
         sessionStorage.setItem('idUsuario', res.id);

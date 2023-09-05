@@ -12,6 +12,12 @@
       <li class="nav-item">
         <a class="nav-link" href="/ingredientes">Ingredientes</a>
       </li>
+      <li class="nav-item" *ngIf="userRol === 'ADMINISTRADOR'">
+        <a class="nav-link" href="/restaurantes">Restaurantes</a>
+      </li>
+      <li class="nav-item" *ngIf="userRol === 'ADMINISTRADOR'">
+        <a class="nav-link" href="/chefs">Chefs</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="/restaurantes">Restaurantes</a>
       </li>

@@ -13,6 +13,7 @@ import { RestauranteCrearComponent } from './restaurante/restaurante-crear/resta
 import { RestauranteListaComponent } from './restaurante/restaurante-lista/restaurante-lista.component';
 import { MenuSemanaListarComponent } from './menu-semana/menu-semana-listar/menu-semana-listar.component';
 import { ChefCrearComponent } from './chef/chef-crear/chef-crear.component';
+import { ChefListaComponent } from './chef/chef-lista/chef-lista.component';
 
 
 const routes: Routes = [
