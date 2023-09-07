@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class ChefListaComponent implements OnInit {
 
   chefs:Array<Chef> = []
-  error: String;
+  error: string;
 
   constructor(
     private routerPath: Router,

@@ -12,7 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class RestauranteListaComponent implements OnInit {
 
   restaurantes:Array<Restaurante> = []
-  error: String;
+  error: string;
 
   constructor(
     private routerPath: Router,
