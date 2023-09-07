@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'menu-semana/crear', component: MenuSemanaCrearComponent, pathMatch: 'full'},
   { path: 'restaurantes', component: RestauranteListaComponent, pathMatch: 'full'},
   { path: 'restaurantes/crear', component: RestauranteCrearComponent, pathMatch: 'full'},
-  { path: 'chefs', component: ChefCrearComponent, pathMatch: 'full'},
+  { path: 'chefs', component: ChefListaComponent, pathMatch: 'full'},
   { path: 'chefs/crear', component: ChefCrearComponent, pathMatch: 'full'},
 ];
 

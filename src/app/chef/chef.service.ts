@@ -21,13 +21,14 @@ export class ChefService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${sessionStorage.getItem('token')}`
     })
-    return this.http.post<Chef>(`${this.apiUrl}/chefs/${idUsuario}`, chef, { headers: headers })
+    return this.http.post<Chef>(`${this.apiUrl}/chef/${idUsuario}`, chef, { headers: headers })
   }
 
   traerChefs(): Observable<Chef[]> {
+    const idUsuario = sessionStorage.getItem('idUsuario');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${sessionStorage.getItem('token')}`
     })
-    return this.http.get<Chef[]>(`${this.apiUrl}/chefs`, { headers: headers })
+    return this.http.get<Chef[]>(`${this.apiUrl}/chefs/${idUsuario}`, { headers: headers })
   }
 }
