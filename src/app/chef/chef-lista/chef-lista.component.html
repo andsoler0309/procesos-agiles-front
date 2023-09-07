@@ -10,6 +10,10 @@
         <p>Aun no se ha creado ningún chef</p>
       </ng-container>
 
+      <ng-container *ngIf="error !== undefined">
+        <p>Solo los administradores pueden ver los chefs</p>
+      </ng-container>
+
       <ng-template #chefTable>
         <table class="tabla-chefs">
           <thead>

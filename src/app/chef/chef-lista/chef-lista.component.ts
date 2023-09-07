@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class ChefListaComponent implements OnInit {
 
   chefs:Array<Chef> = []
+  error: String;
 
   constructor(
     private routerPath: Router,
@@ -25,7 +26,12 @@ export class ChefListaComponent implements OnInit {
     },
     error => {
       if (error.statusText === "UNAUTHORIZED") {
-        this.toastr.error("Error","Su sesión ha caducado, por favor vuelva a iniciar sesión.")
+        if (error.error === "Solo los Administradores pueden ver Chefs") {
+          this.toastr.error("Error","Solo los Administradores pueden ver Chefs")
+          this.error = error.error;
+        } else {
+          this.toastr.error("Error","Su sesión ha caducado, por favor vuelva a iniciar sesión.")
+        }
       }
       else if (error.statusText === "UNPROCESSABLE ENTITY") {
         this.toastr.error("Error","No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
@@ -37,6 +43,11 @@ export class ChefListaComponent implements OnInit {
   }
 
   crearChef():void {
+    if (this.error) {
+      this.toastr.error("Error","Solo los Administradores pueden crear Chefs")
+      return;
+    }
+
     this.routerPath.navigate(['/chefs/crear/']);
   }
 

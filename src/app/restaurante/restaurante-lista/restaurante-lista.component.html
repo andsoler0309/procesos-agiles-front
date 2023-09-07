@@ -10,6 +10,10 @@
         <p>Aun no se ha creado ningún restaurante</p>
       </ng-container>
 
+      <ng-container *ngIf="error !== undefined">
+        <p>Solo los administradores pueden ver los restaurantes</p>
+      </ng-container>
+
       <ng-template #restauranteTable>
         <table class="tabla-restaurante">
           <thead>

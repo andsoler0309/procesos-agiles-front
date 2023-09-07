@@ -12,6 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class RestauranteListaComponent implements OnInit {
 
   restaurantes:Array<Restaurante> = []
+  error: String;
 
   constructor(
     private routerPath: Router,
@@ -21,11 +22,17 @@ export class RestauranteListaComponent implements OnInit {
 
   ngOnInit() {
     this.restauranteService.traerRestaurantes().subscribe((restaurantes) => {
+      console.log(restaurantes)
       this.restaurantes = restaurantes;
     },
     error => {
       if (error.statusText === "UNAUTHORIZED") {
-        this.toastr.error("Error","Su sesión ha caducado, por favor vuelva a iniciar sesión.")
+        if (error.error === "Solo los Administradores pueden ver Restaurantes") {
+          this.toastr.error("Error","Solo los Administradores pueden ver Restaurantes")
+          this.error = error.error;
+        } else {
+          this.toastr.error("Error","Su sesión ha caducado, por favor vuelva a iniciar sesión.")
+        }
       }
       else if (error.statusText === "UNPROCESSABLE ENTITY") {
         this.toastr.error("Error","No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
@@ -37,6 +44,11 @@ export class RestauranteListaComponent implements OnInit {
   }
 
   crearRestaurante():void {
+    if (this.error) {
+      this.toastr.error("Error","Solo los Administradores pueden crear Restaurantes")
+      return;
+    }
+
     this.routerPath.navigate(['/restaurantes/crear/']);
   }
 
