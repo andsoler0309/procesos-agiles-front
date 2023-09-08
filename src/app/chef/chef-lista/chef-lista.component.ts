@@ -13,7 +13,8 @@ export class ChefListaComponent implements OnInit {
 
   chefs:Array<Chef> = []
   error: string;
-
+  chefElegido: Chef;
+  
   constructor(
     private routerPath: Router,
     private chefService: ChefService,
@@ -51,4 +52,8 @@ export class ChefListaComponent implements OnInit {
     this.routerPath.navigate(['/chefs/crear/']);
   }
 
+  
+  verDetalle(chef: Chef): void {
+    this.chefElegido = chef
+  }
 }

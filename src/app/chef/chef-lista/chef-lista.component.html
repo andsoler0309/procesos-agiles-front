@@ -1,41 +1,53 @@
 <app-encabezado></app-encabezado>
 <div class="row">
   <div class="col col-6">
-    <div class="container-table">
-      <div class="header-tabla-chefs">
-          Chefs
+    <div class="card" style="width: 100%;">
+      <div class="container-table">
+        <div class="header-tabla-chefs">
+            Chefs
+        </div>
+
+        <ng-container *ngIf="chefs.length === 0; else chefTable">
+          <p>Aun no se ha creado ningún chef</p>
+        </ng-container>
+
+        <ng-container *ngIf="error !== undefined">
+          <p>Solo los administradores pueden ver los chefs</p>
+        </ng-container>
+
+        <ng-template #chefTable>
+          <table class="tabla-chefs">
+            <thead>
+              <th>Nombre</th>
+              <th>Restaurante</th>
+              <th>Acciones</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let chef of chefs" (click)="verDetalle(chef)">
+                <td>{{chef.nombre}}</td>
+                <td>{{chef.restaurante.nombre}}</td>
+                <td>
+                  <button [disabled]="false" type="button" class="btn btn-warning"><i class="bi bi-pencil"></i></button>&nbsp;
+                  <button [disabled]="false" type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </ng-template>
       </div>
-
-      <ng-container *ngIf="chefs.length === 0; else chefTable">
-        <p>Aun no se ha creado ningún chef</p>
-      </ng-container>
-
-      <ng-container *ngIf="error !== undefined">
-        <p>Solo los administradores pueden ver los chefs</p>
-      </ng-container>
-
-      <ng-template #chefTable>
-        <table class="tabla-chefs">
-          <thead>
-            <th>Nombre</th>
-            <th>Restaurante</th>
-            <th>Acciones</th>
-          </thead>
-          <tbody>
-            <tr *ngFor="let chef of chefs">
-              <td>{{chef.nombre}}</td>
-              <td>{{chef.restaurante.nombre}}</td>
-              <td>
-                <button [disabled]="false" type="button" class="btn btn-warning"><i class="bi bi-pencil"></i></button>&nbsp;
-                <button [disabled]="false" type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-      </ng-template>
-
-      <div class="footer-tabla-chefs">
-        <button type="button" class="btn btn-primary" (click)="crearChef()">Crear chef</button>
-      </div>
+    </div>
+</div>
+<div class="col col-6">
+  <div class="card" style="width: 100%;" *ngIf="chefElegido">
+    <div class="card-header">
+      <h5 class="card-title">Chef: {{chefElegido.nombre}}</h5>
+    </div>
+    <p class="card-text">
+      <app-chef-detalle [chef]="chefElegido"></app-chef-detalle>
+    </p>
+  </div>
+</div>
+<div class="footer-tabla-chefs">
+  <button type="button" class="btn btn-primary" (click)="crearChef()">Crear chef</button>
 </div>

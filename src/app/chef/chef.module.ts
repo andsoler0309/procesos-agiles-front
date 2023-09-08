@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EncabezadoAppModule } from '../encabezado-app/encabezado-app.module';
 import { ChefCrearComponent } from './chef-crear/chef-crear.component';
 import { ChefListaComponent } from './chef-lista/chef-lista.component';
+import { ChefDetalleComponent } from './chef-detalle/chef-detalle.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { ChefListaComponent } from './chef-lista/chef-lista.component';
   ],
   declarations: [
     ChefCrearComponent,
-    ChefListaComponent
+    ChefListaComponent,
+    ChefDetalleComponent
   ],
   exports: [
     ChefCrearComponent,
