@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Chef } from '../chef';
 import { Restaurante } from 'src/app/restaurante/restaurante';
 import { ChefService } from '../chef.service';
-import { RestauranteService } from 'src/app/restaurante/restaurante.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
@@ -14,10 +13,8 @@ import { Router } from '@angular/router';
 export class ChefDetalleComponent implements OnInit {
   
   @Input() chef: Chef;
-  restaurante: Restaurante;
 
   constructor(
-    private routerPath: Router,
     private toastr: ToastrService,
     private chefService: ChefService,
   ){}
