@@ -16,6 +16,7 @@ export class MenuSemanaService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${sessionStorage.getItem('token')}`
     })
+    console.log(menuSemana);
     return this.http.post<MenuSemana>(`${this.apiUrl}/menu-semana/${sessionStorage.getItem("idUsuario")}`, menuSemana, { headers: headers })
   }
 

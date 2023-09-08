@@ -1,4 +1,4 @@
-class InfoUsuario {
+export class InfoUsuario {
     usuario: string;
     rol: string;
     public constructor(usuario: string, rol: string) {
