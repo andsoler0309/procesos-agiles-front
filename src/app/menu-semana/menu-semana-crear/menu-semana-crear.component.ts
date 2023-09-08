@@ -50,7 +50,6 @@ export class MenuSemanaCrearComponent {
 
 
   crearMenu(menu: MenuSemana): void {
-    console.log(menu);
     this.menuSemanaService.crearMenuSemana(menu).subscribe((menu) => {
       this.toastr.success("Confirmation", "Registro creado")
       this.menuForm.reset();
@@ -107,7 +106,7 @@ export class MenuSemanaCrearComponent {
 
   cancelarMenu(): void {
     this.menuForm.reset();
-    this.routerPath.navigate(['/menu-semana/crear']);
+    this.routerPath.navigate(['/menu-semana']);
   }
 
   eliminarIngrediente(indice: number): void {

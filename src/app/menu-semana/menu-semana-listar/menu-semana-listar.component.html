@@ -1,8 +1,43 @@
 <app-encabezado></app-encabezado>
-<h3>
-  Menus de la semana
-</h3>
+<div class="row">
+    <div class="col col-9">
+    <div class="container-table">
+        <div class="header-tabla-menu">
+                Menus de la semana
+            </div>
 
-<div class="card-header">
-  Mis menus de la semana <button type="button" class="btn btn-warning" (click)="crearMenuSemana()"><i class="bi bi-plus-circle"></i></button>
+        <ng-container *ngIf="menus.length === 0">
+                <p>Aun no se ha creado ningún chef</p>
+        </ng-container>
+
+        <table class="table-menu" *ngIf="menus.length > 0">
+                <thead>
+                <th>Fecha Inicio</th>
+                <th>Fecha Fin</th>
+                <th>Nombre</th>
+                
+                <th>Usuario creador</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+
+                </thead>
+                <tbody>
+                <tr *ngFor="let menu of menus">
+                    <td>{{menu.fecha_inicial}}</td>
+                    <td>{{menu.fecha_final}}</td>
+                    <td>{{menu.nombre}}</td>
+                    <td>{{menu.usuario.usuario}}</td>
+                    <td>{{menu.usuario.rol}}</td>
+                    <td>
+                    <button [disabled]="false" type="button" class="btn btn-warning"><i class="bi bi-pencil"></i></button>&nbsp;
+                    <button [disabled]="false" type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>&nbsp;
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        <div class="card-header">
+        <button type="button" class="btn btn-primary" (click)="crearMenuSemana()">Crear Menu de la semana</button>
+        </div>
+        </div>
+    </div>
 </div>
