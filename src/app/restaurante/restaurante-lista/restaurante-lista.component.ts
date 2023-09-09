@@ -13,6 +13,7 @@ export class RestauranteListaComponent implements OnInit {
 
   restaurantes:Array<Restaurante> = []
   error: string;
+  restauranteElegido: Restaurante;
 
   constructor(
     private routerPath: Router,
@@ -50,6 +51,10 @@ export class RestauranteListaComponent implements OnInit {
     }
 
     this.routerPath.navigate(['/restaurantes/crear/']);
+  }
+
+  verDetalle(restaurante: Restaurante): void {
+    this.restauranteElegido = restaurante
   }
 
 }

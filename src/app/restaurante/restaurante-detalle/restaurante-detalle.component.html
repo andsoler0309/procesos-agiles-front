@@ -1,0 +1,118 @@
+
+<div class="row px-2">
+  <div class="col col-12">
+    <!--Nombre-->
+    <div class="form-group">
+      <h2><label id="label_nombre">Nombre: {{restaurante.nombre}}</label></h2>
+    </div>
+
+    <!--Direccion-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label id="label_direccion">Direccion: {{restaurante.direccion}}</label>
+    </div>
+
+    <!--Telefono-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label id="label_telefono">Telefono: {{restaurante.telefono}}</label>
+    </div>
+
+    <div class="subtitulo">
+        <h3>Redes Sociales</h3>
+    </div>
+    <div class="redes-sociales">
+      <!--Facebook-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label id="label_facebook">Facebook : {{restaurante.facebook}}</label>
+      </div>
+
+      <!--Twitter-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label id="label_twitter">Twitter: {{restaurante.twitter}}</label>
+      </div>
+
+      <!--Instagram-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label id="label_instagram">Instagram: {{restaurante.instagram}}</label>
+      </div>
+
+    </div>
+
+    <!--Horarios-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label id="label_hora_atencion">Horarios en que abre: {{restaurante.hora_atencion}}</label>
+    </div>
+
+    <div class="subtitulo">
+        <h3>Opciones para consumir</h3>
+
+        <div class="form-check px-5">
+          <input class="form-check-input" type="checkbox" [attr.disabled]=true [checked]="restaurante.is_en_lugar" id="is_en_lugar">
+          <label class="form-check-label" for="is_en_lugar">
+            Comer en el lugar
+          </label>
+        </div>
+        <div class="form-check px-5">
+          <input class="form-check-input" type="checkbox" [attr.disabled]=true [checked]="restaurante.is_domicilios" id="is_domicilios">
+          <label class="form-check-label" for="is_domicilios">
+            A domicilio
+          </label>
+        </div>
+    </div>
+
+
+
+
+    <!--TipoComida-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label id="label_tipo_comida">Tipo de comida: {{restaurante.tipo_comida}}</label>
+    </div>
+
+    <div class="subtitulo">
+      <h3>Aplicaciones asociadas</h3>
+
+      <div class="form-check px-5">
+        <input class="form-check-input" type="checkbox" [attr.disabled]=true [checked]="restaurante.is_rappi" id="is_rappi">
+        <label class="form-check-label" for="is_rappi">
+          Rappi
+        </label>
+      </div>
+      <div class="form-check px-5">
+        <input class="form-check-input" type="checkbox" [attr.disabled]=true [checked]="restaurante.is_didi" id="is_didi">
+        <label class="form-check-label" for="is_didi">
+          DiDi
+        </label>
+      </div>
+    </div>
+
+    <!--Chefs-->
+    <h3><label>Chefs </label></h3>
+    <div id="div_chefs" class="form-group mx-sm-3 mb-2">
+      <table class="tabla-chef px-5">
+        <tbody>
+          <tr *ngFor="let chef of restaurante.chefs">
+            <td>{{chef.nombre}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!--Menus-->
+    <h3><label>Menus </label></h3>
+    <div id="div_menus" class="form-group mx-sm-3 mb-2">
+      <table class="tabla-chef px-5">
+        <tbody>
+          <tr *ngFor="let menu of restaurante.menu_semana">
+            <td>{{menu.nombre}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+
+
+  </div>
+</div>
+
+
+

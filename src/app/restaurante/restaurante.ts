@@ -1,3 +1,5 @@
+import { Chef } from "../chef/chef";
+import { MenuSemana } from "../menu-semana/menu-semana";
 import { Usuario } from "../usuario/usuario";
 
 export class Restaurante {
@@ -15,6 +17,8 @@ export class Restaurante {
   is_rappi: boolean;
   is_didi: boolean;
   administrador: Usuario;
+  chefs: Chef[];
+  menu_semana: MenuSemana[];
 
   public constructor(
     id: number,
