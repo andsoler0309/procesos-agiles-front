@@ -16,6 +16,7 @@
   },
   "private": true,
   "dependencies": {
+    "express":"*",
     "body-parser":"*",
     "bcrypt": "^0.8.5",
     "@angular/animations": "^15.0.0",
