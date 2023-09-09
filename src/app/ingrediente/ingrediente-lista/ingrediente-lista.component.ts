@@ -15,7 +15,6 @@ export class IngredienteListaComponent implements OnInit {
 
   constructor(
     private routerPath: Router,
-    private router: ActivatedRoute,
     private toastr: ToastrService,
     private ingredienteService: IngredienteService
   ) { }

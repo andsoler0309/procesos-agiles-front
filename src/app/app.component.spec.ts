@@ -1,12 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        FormsModule,
       ],
       declarations: [
         AppComponent
@@ -26,10 +28,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('ProyectoFrontend');
   });
 
-  it('should render title', () => {
+  it('should have h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('ProyectoFrontend app is running!');
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('h1').textContent).toBe('');
   });
 });
