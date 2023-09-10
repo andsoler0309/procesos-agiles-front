@@ -53,7 +53,7 @@ export class MenuSemanaCrearComponent {
     this.menuSemanaService.crearMenuSemana(menu).subscribe((menu) => {
       this.toastr.success("Confirmation", "Registro creado")
       this.menuForm.reset();
-      this.routerPath.navigate(['/menu-semana/crear']);
+      this.routerPath.navigate(['/menu-semana']);
     },
     error => {
       if (error.statusText === "UNAUTHORIZED") {
