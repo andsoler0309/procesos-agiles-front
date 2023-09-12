@@ -1,0 +1,120 @@
+<app-encabezado></app-encabezado>
+<h3>
+  Nuevo chef
+</h3>
+
+<form
+[formGroup]="chefForm"
+>
+  <div class="row">
+    <div class="col col-">
+      <!--Nombre-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="nombre">Nombre</label>
+        <input
+          novalidate
+          id="nombre"
+          class="form-control"
+          formControlName="nombre"
+          placeholder="Nombre"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            chefForm.get('nombre')!.hasError('required') &&
+            chefForm.get('nombre')!.touched
+          "
+        >
+          Contenido requerido
+        </div>
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="chefForm.get('nombre')!.hasError('minlength')"
+        >
+          El contenido es muy corto, debe tener al menos dos caracteres.
+        </div>
+      </div>
+      <!--Correo-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="usuario">Correo</label>
+        <input
+          novalidate
+          id="usuario"
+          class="form-control"
+          formControlName="usuario"
+          placeholder="chef.apellido@gmail.com"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            chefForm.get('usuario')!.hasError('required') &&
+            chefForm.get('usuario')!.touched
+          "
+        >
+          Contenido requerido
+        </div>
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="chefForm.get('usuario')!.hasError('minlength')"
+        >
+          El contenido es no es valido.
+        </div>
+      </div>
+      <!--Contraseña-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="contrasena">Contraseña</label>
+        <input
+          novalidate
+          id="contrasena"
+          class="form-control"
+          formControlName="contrasena"
+          placeholder="********"
+          type="password"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            chefForm.get('contrasena')!.hasError('required') &&
+            chefForm.get('contrasena')!.touched
+          "
+        >
+          Contenido requerido, debe tener al menos ocho caracteres, una mayuscula, una minuscula y un caracter especial.
+        </div>
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="chefForm.get('contrasena')!.hasError('minlength')"
+        >
+          El contenido es no es valido.
+        </div>
+      </div>
+      <!--Restaurante-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="restaurante_id">Restaurante</label>
+        <select id="restaurante_id" class="form-select"  formControlName="restaurante_id">
+          <option value="">Elegir restaurante</option>
+          <option *ngFor="let restaurante of restaurantes" [ngValue]="restaurante.id">
+            {{ restaurante.nombre }}
+          </option>
+        </select>
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            chefForm.get('restaurante_id')!.hasError('required') &&
+            chefForm.get('restaurante_id')!.touched
+          "
+        >
+          Contenido requerido.
+        </div>
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="chefForm.get('restaurante_id')!.hasError('minlength')"
+        >
+          El contenido es no es valido.
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <button type="submit" class="btn btn-primary" [disabled]="!chefForm.valid">Crear</button>&nbsp;
+  <button type="button" class="btn btn-danger ml-3" (click)="cancelarChef()">Cancelar</button>
+</form>
