@@ -24,7 +24,6 @@ export class RestauranteListaComponent implements OnInit {
 
   ngOnInit() {
     this.restauranteService.traerRestaurantes().subscribe((restaurantes) => {
-      console.log(restaurantes)
       this.restaurantes = restaurantes;
     },
     error => {
