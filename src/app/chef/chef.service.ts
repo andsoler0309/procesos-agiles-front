@@ -47,4 +47,12 @@ export class ChefService {
     })
     return this.http.put<Chef>(`${this.apiUrl}/chef/${idUsuario}/${chef.id}`, chef, { headers: headers })
   }
+
+  borrarChef(chefId: Number): Observable<Chef> {
+    const idUsuario = sessionStorage.getItem('idUsuario');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+    })
+    return this.http.delete<Chef>(`${this.apiUrl}/chef/${idUsuario}/${chefId}`, { headers: headers })
+  }
 }

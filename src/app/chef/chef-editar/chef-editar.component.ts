@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -14,37 +14,52 @@ import { RestauranteService } from 'src/app/restaurante/restaurante.service';
 })
 export class ChefEditarComponent implements OnInit {
 
-  chef: Chef;
   chefForm: FormGroup;
-  userRol = sessionStorage.getItem('rol');
   restaurantes:Array<Restaurante> = []
-  restauranteService: RestauranteService;
+  chef: Chef;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: ActivatedRoute,
     private routerPath: Router,
     private toastr: ToastrService,
-    private chefService: ChefService
+    private chefService: ChefService,
+    private restauranteService: RestauranteService,
   ) { }
 
   ngOnInit() {
-    const idChef = parseInt(this.router.snapshot.params['id']);
-    this.obtenerRestaurantes()
-    this.chefService.obtenerChef(idChef).subscribe((chef) => {
-      this.chef = chef;
-      this.chefForm = this.formBuilder.group({
-        id: [this.chef.id, []],
-        nombre: [this.chef.nombre, [Validators.required, Validators.minLength(2)]],
-        usuario: [this.chef.usuario, [Validators.required, Validators.minLength(2)]],
-        restaurante: [this.chef.restaurante, [Validators.required, Validators.minLength(2)]],
-      });
-    });
-  }
+    const chefId = parseInt(this.router.snapshot.params['id']);
 
-  obtenerRestaurantes(): void {
     this.restauranteService.traerRestaurantes().subscribe((restaurantes) => {
       this.restaurantes = restaurantes;
+      this.chefService.obtenerChef(chefId).subscribe((chef) => {
+        this.chef = chef;
+        this.chefForm = this.formBuilder.group({
+          id: [this.chef.id, []],
+          nombre: [this.chef.nombre, [Validators.required]],
+          usuario: [this.chef.usuario, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+          restaurante_id: [this.chef.restaurante.id, [Validators.required]],
+        });
+      });
+    },
+    error => {
+      if (error.statusText === "UNAUTHORIZED") {
+        this.toastr.error("Error","Su sesión ha caducado, por favor vuelva a iniciar sesión.")
+      }
+      else if (error.statusText === "UNPROCESSABLE ENTITY") {
+        this.toastr.error("Error","No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
+      }
+      else {
+        this.toastr.error("Error","Ha ocurrido un error. " + error.message)
+      }
+    })
+  }
+
+  editarchef(chef: Chef): void {
+    this.chefService.editarChef(chef).subscribe((chef) => {
+      this.toastr.success("Confirmation", "Información editada")
+      this.chefForm.reset();
+      this.routerPath.navigate(['/chefs/']);
     },
     error => {
       if (error.statusText === "UNAUTHORIZED") {
