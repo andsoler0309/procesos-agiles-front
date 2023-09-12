@@ -34,7 +34,7 @@ export class ChefCrearComponent implements OnInit {
     this.chefForm = this.formBuilder.group({
       nombre: ["", [Validators.required, Validators.minLength(2)]],
       contrasena: ["", [Validators.required, Validators.minLength(8)]],
-      usuario: ["", [Validators.required, Validators.minLength(2)]],
+      usuario: ["", [Validators.required, Validators.minLength(2), Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       restaurante_id: ["", [Validators.required]],
     });
   }
@@ -46,11 +46,15 @@ export class ChefCrearComponent implements OnInit {
       this.routerPath.navigate(['/chefs/']);
     },
     error => {
+      console.log(error)
       if (error.statusText === "UNAUTHORIZED") {
         this.toastr.error("Error","Su sesión ha caducado, por favor vuelva a iniciar sesión.")
       }
       else if (error.statusText === "UNPROCESSABLE ENTITY") {
         this.toastr.error("Error","No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
+      }
+      else if (error.error) {
+        this.toastr.error("Error", error.error)
       }
       else {
         this.toastr.error("Error","Ha ocurrido un error. " + error.message)

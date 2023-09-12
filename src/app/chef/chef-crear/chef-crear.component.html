@@ -56,9 +56,9 @@
         </div>
         <div
           class="alert alert-danger alert-dismissible fade show"
-          *ngIf="chefForm.get('usuario')!.hasError('minlength')"
+          *ngIf="chefForm.get('usuario')!.hasError('pattern')"
         >
-          El contenido es no es valido.
+          El contenido es no es valido, debe ser un correo valido.
         </div>
       </div>
       <!--Contraseña-->
