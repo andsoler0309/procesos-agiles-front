@@ -14,7 +14,7 @@ export class RestauranteListaComponent implements OnInit {
   restaurantes:Array<Restaurante> = []
   error: string;
   restauranteElegido: Restaurante;
-  deleteButtonClicked: boolean = false;
+  deleteButtonClicked = false;
 
   constructor(
     private routerPath: Router,
