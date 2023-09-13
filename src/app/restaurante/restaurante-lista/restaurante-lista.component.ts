@@ -14,7 +14,7 @@ export class RestauranteListaComponent implements OnInit {
   restaurantes:Array<Restaurante> = []
   error: string;
   restauranteElegido: Restaurante;
-  deleteButtonClicked: Boolean = false;
+  deleteButtonClicked: boolean = false;
 
   constructor(
     private routerPath: Router,
@@ -61,11 +61,11 @@ export class RestauranteListaComponent implements OnInit {
     this.restauranteElegido = restaurante
   }
 
-  editarRestaurante(restuanteId: Number): void {
+  editarRestaurante(restuanteId: number): void {
     this.routerPath.navigate(['/restaurantes/editar/' + restuanteId]);
   }
 
-  borrarRestaurante(restuanteId: Number): void {
+  borrarRestaurante(restuanteId: number): void {
     this.restauranteService.borrarRestaurante(restuanteId).subscribe((restaurante) => {
     this.toastr.success("Éxito","Restaurante borrado correctamente")
     this.ngOnInit();

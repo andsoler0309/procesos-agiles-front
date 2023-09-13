@@ -46,7 +46,7 @@ export class RestauranteService {
   }
 
 
-  borrarRestaurante(idRestaurante: Number): Observable<Restaurante> {
+  borrarRestaurante(idRestaurante: number): Observable<Restaurante> {
     const idUsuario = sessionStorage.getItem('idUsuario');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${sessionStorage.getItem('token')}`
