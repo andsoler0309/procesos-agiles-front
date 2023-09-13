@@ -14,7 +14,7 @@ export class ChefListaComponent implements OnInit {
   chefs:Array<Chef> = []
   error: string;
   chefElegido: Chef;
-  deleteButtonClicked: Boolean = false;
+  deleteButtonClicked: boolean = false;
 
   constructor(
     private routerPath: Router,
@@ -62,7 +62,7 @@ export class ChefListaComponent implements OnInit {
     this.chefElegido = chef
   }
 
-  editarChef(chefId: Number): void {
+  editarChef(chefId: number): void {
     if (this.error) {
       this.toastr.error("Error","Solo los Administradores pueden editar Chefs")
       return;
@@ -71,7 +71,7 @@ export class ChefListaComponent implements OnInit {
     this.routerPath.navigate(['/chefs/editar/' + chefId]);
   }
 
-  borrarChef(chefId: Number): void {
+  borrarChef(chefId: number): void {
     this.chefService.borrarChef(chefId).subscribe((chef) => {
       this.toastr.success("Confirmation", "Registro eliminado de la lista")
       this.ngOnInit();
