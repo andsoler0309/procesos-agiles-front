@@ -14,7 +14,7 @@ export class ChefListaComponent implements OnInit {
   chefs:Array<Chef> = []
   error: string;
   chefElegido: Chef;
-  deleteButtonClicked: boolean = false;
+  deleteButtonClicked = false;
 
   constructor(
     private routerPath: Router,
