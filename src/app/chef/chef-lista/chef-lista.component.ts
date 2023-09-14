@@ -14,7 +14,8 @@ export class ChefListaComponent implements OnInit {
   chefs:Array<Chef> = []
   error: string;
   chefElegido: Chef;
-  
+  deleteButtonClicked = false;
+
   constructor(
     private routerPath: Router,
     private chefService: ChefService,
@@ -52,8 +53,39 @@ export class ChefListaComponent implements OnInit {
     this.routerPath.navigate(['/chefs/crear/']);
   }
 
-  
   verDetalle(chef: Chef): void {
+    if (this.chefElegido && this.chefElegido.id === chef.id) {
+      this.chefElegido = null;
+      return;
+    }
+
     this.chefElegido = chef
+  }
+
+  editarChef(chefId: number): void {
+    if (this.error) {
+      this.toastr.error("Error","Solo los Administradores pueden editar Chefs")
+      return;
+    }
+
+    this.routerPath.navigate(['/chefs/editar/' + chefId]);
+  }
+
+  borrarChef(chefId: number): void {
+    this.chefService.borrarChef(chefId).subscribe((chef) => {
+      this.toastr.success("Confirmation", "Registro eliminado de la lista")
+      this.ngOnInit();
+    },
+    error => {
+      if (error.statusText === "UNAUTHORIZED") {
+        this.toastr.error("Error","Su sesión ha caducado, por favor vuelva a iniciar sesión.")
+      }
+      else if (error.statusText === "UNPROCESSABLE ENTITY") {
+        this.toastr.error("Error","No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
+      }
+      else {
+        this.toastr.error("Error","Ha ocurrido un error. " + error.message)
+      }
+    });
   }
 }
