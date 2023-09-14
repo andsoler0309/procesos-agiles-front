@@ -36,21 +36,4 @@ export class RestauranteService {
     })
     return this.http.get<Restaurante>(`${this.apiUrl}/restaurantes/${idUsuario}/${id_restaurante}`, { headers: headers })
   }
-
-  editarRestaurante(restaurante: Restaurante): Observable<Restaurante> {
-    const idUsuario = sessionStorage.getItem('idUsuario');
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${sessionStorage.getItem('token')}`
-    })
-    return this.http.put<Restaurante>(`${this.apiUrl}/restaurantes/${idUsuario}/${restaurante.id}`, restaurante, { headers: headers })
-  }
-
-
-  borrarRestaurante(idRestaurante: number): Observable<Restaurante> {
-    const idUsuario = sessionStorage.getItem('idUsuario');
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${sessionStorage.getItem('token')}`
-    })
-    return this.http.delete<Restaurante>(`${this.apiUrl}/restaurantes/${idUsuario}/${idRestaurante}`, { headers: headers })
-  }
 }
