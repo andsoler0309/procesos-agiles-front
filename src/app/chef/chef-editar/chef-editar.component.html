@@ -1,11 +1,12 @@
 <app-encabezado></app-encabezado>
+
 <h3>
-  Nuevo chef
+  Editando chef: {{chefForm.get('nombre').value}}
 </h3>
 
 <form
 [formGroup]="chefForm"
-(ngSubmit)="!chefForm.invalid && crearChef(chefForm.value)"
+(ngSubmit)="!chefForm.invalid && editarchef(chefForm.value)"
 >
   <div class="row">
     <div class="col col-">
@@ -44,6 +45,7 @@
           class="form-control"
           formControlName="usuario"
           placeholder="chef.apellido@gmail.com"
+          readonly
         />
         <div
           class="alert alert-danger alert-dismissible fade show"
@@ -59,33 +61,6 @@
           *ngIf="chefForm.get('usuario')!.hasError('pattern')"
         >
           El contenido es no es valido, debe ser un correo valido.
-        </div>
-      </div>
-      <!--Contraseña-->
-      <div class="form-group mx-sm-3 mb-2">
-        <label for="contrasena">Contraseña</label>
-        <input
-          novalidate
-          id="contrasena"
-          class="form-control"
-          formControlName="contrasena"
-          placeholder="********"
-          type="password"
-        />
-        <div
-          class="alert alert-danger alert-dismissible fade show"
-          *ngIf="
-            chefForm.get('contrasena')!.hasError('required') &&
-            chefForm.get('contrasena')!.touched
-          "
-        >
-          Contenido requerido, debe tener al menos ocho caracteres, una mayuscula, una minuscula y un caracter especial.
-        </div>
-        <div
-          class="alert alert-danger alert-dismissible fade show"
-          *ngIf="chefForm.get('contrasena')!.hasError('minlength')"
-        >
-          El contenido es no es valido.
         </div>
       </div>
       <!--Restaurante-->
@@ -116,6 +91,6 @@
     </div>
   </div>
   <br />
-  <button type="submit" class="btn btn-primary" [disabled]="!chefForm.valid">Crear</button>&nbsp;
+  <button type="submit" class="btn btn-primary" [disabled]="!chefForm.valid">Editar</button>&nbsp;
   <button type="button" class="btn btn-danger ml-3" (click)="cancelarChef()">Cancelar</button>
 </form>

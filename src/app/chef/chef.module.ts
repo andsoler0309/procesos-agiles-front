@@ -5,6 +5,7 @@ import { EncabezadoAppModule } from '../encabezado-app/encabezado-app.module';
 import { ChefCrearComponent } from './chef-crear/chef-crear.component';
 import { ChefListaComponent } from './chef-lista/chef-lista.component';
 import { ChefDetalleComponent } from './chef-detalle/chef-detalle.component';
+import { ChefEditarComponent } from './chef-editar/chef-editar.component';
 
 @NgModule({
   imports: [
@@ -15,11 +16,13 @@ import { ChefDetalleComponent } from './chef-detalle/chef-detalle.component';
   declarations: [
     ChefCrearComponent,
     ChefListaComponent,
-    ChefDetalleComponent
+    ChefDetalleComponent,
+    ChefEditarComponent
   ],
   exports: [
     ChefCrearComponent,
-    ChefListaComponent
+    ChefListaComponent,
+    ChefEditarComponent
   ]
 })
 export class ChefModule { }
