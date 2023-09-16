@@ -86,13 +86,13 @@ describe('ChefEditarComponent', () => {
   });
 
   it('should have a nombre field', () => {
-    let nombre = component.chefForm.controls['nombre'];
+    const nombre = component.chefForm.controls['nombre'];
     expect(nombre.value).toEqual(component.chef.nombre);
   });
 
   it('should be invalid when nombre is less than 2 characters', () => {
     let errors = {};
-    let nombre = component.chefForm.controls['nombre'];
+    const nombre = component.chefForm.controls['nombre'];
     nombre.setValue("a");
     errors = nombre.errors || {};
     expect(errors['minlength']).toBeTruthy();
@@ -100,20 +100,20 @@ describe('ChefEditarComponent', () => {
 
   it('should be invalid when nombre is empty', () => {
     let errors = {};
-    let nombre = component.chefForm.controls['nombre'];
+    const nombre = component.chefForm.controls['nombre'];
     nombre.setValue("");
     errors = nombre.errors || {};
     expect(errors['required']).toBeTruthy();
   });
 
   it('should have a usuario field', () => {
-    let usuario = component.chefForm.controls['usuario'];
+    const usuario = component.chefForm.controls['usuario'];
     expect(usuario.value).toEqual(component.chef.usuario);
   });
 
   it('should be invalid when usuario is less than 2 characters', () => {
     let errors = {};
-    let usuario = component.chefForm.controls['usuario'];
+    const usuario = component.chefForm.controls['usuario'];
     usuario.setValue("a");
     errors = usuario.errors || {};
     expect(errors['minlength']).toBeTruthy();
@@ -121,7 +121,7 @@ describe('ChefEditarComponent', () => {
 
   it('should be invalid when usuario is empty', () => {
     let errors = {};
-    let usuario = component.chefForm.controls['usuario'];
+    const usuario = component.chefForm.controls['usuario'];
     usuario.setValue("");
     errors = usuario.errors || {};
     expect(errors['required']).toBeTruthy();
@@ -129,27 +129,27 @@ describe('ChefEditarComponent', () => {
 
   it('should be invalid when usuario is not an email', () => {
     let errors = {};
-    let usuario = component.chefForm.controls['usuario'];
+    const usuario = component.chefForm.controls['usuario'];
     usuario.setValue("a");
     errors = usuario.errors || {};
     expect(errors['pattern']).toBeTruthy();
   });
 
   it('should have a restaurante_id field', () => {
-    let restaurante_id = component.chefForm.controls['restaurante_id'];
+    const restaurante_id = component.chefForm.controls['restaurante_id'];
     expect(restaurante_id.value).toEqual(component.chef.restaurante);
   });
 
   it('should be invalid when restaurante_id is empty', () => {
     let errors = {};
-    let restaurante_id = component.chefForm.controls['restaurante_id'];
+    const restaurante_id = component.chefForm.controls['restaurante_id'];
     restaurante_id.setValue("");
     errors = restaurante_id.errors || {};
     expect(errors['required']).toBeTruthy();
   });
 
   it('should not have a password field', () => {
-    let password = component.chefForm.controls['password'];
+    const password = component.chefForm.controls['password'];
     expect(password).toBeUndefined();
   });
 
