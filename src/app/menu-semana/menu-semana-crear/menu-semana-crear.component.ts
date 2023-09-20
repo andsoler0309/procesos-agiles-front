@@ -34,7 +34,8 @@ export class MenuSemanaCrearComponent {
   ngOnInit(): void {
     this.recetaSubForm = this.formBuilder.array([
       this.formBuilder.group({
-        id: ["", Validators.required]
+        id: ["", Validators.required],
+        numero_platos: ["", Validators.required]
       })
     ])
     this.menuForm = this.formBuilder.group({
@@ -87,7 +88,8 @@ export class MenuSemanaCrearComponent {
 
   adicionarReceta(): void {
     const filaNueva = this.formBuilder.group({
-      id: ["", Validators.required]
+      id: ["", Validators.required],
+      numero_platos: ["", Validators.required]
     })
 
     this.recetaSubForm.push(filaNueva)
@@ -101,7 +103,7 @@ export class MenuSemanaCrearComponent {
     const mes = (fechaFinal.getMonth() + 1).toString().padStart(2, '0');
     const ano = fechaFinal.getFullYear();
     this.menuForm.get('fechaFinal').setValue(`${ano}-${mes}-${dia}`);
-    
+
   }
 
   cancelarMenu(): void {
@@ -109,7 +111,7 @@ export class MenuSemanaCrearComponent {
     this.routerPath.navigate(['/menu-semana']);
   }
 
-  eliminarIngrediente(indice: number): void {
+  eliminarReceta(indice: number): void {
     this.recetaSubForm.removeAt(indice)
   }
 }
