@@ -5,7 +5,6 @@ import { Receta } from '../receta';
 import { Ingrediente } from 'src/app/ingrediente/ingrediente';
 import { RecetaIngrediente } from 'src/app/receta-ingrediente/receta-ingrediente';
 import { RecetaService } from '../receta.service';
-
 @Component({
   selector: 'app-receta-lista',
   templateUrl: './receta-lista.component.html',
@@ -19,7 +18,7 @@ export class RecetaListaComponent implements OnInit {
   constructor(
     private routerPath: Router,
     private toastr: ToastrService,
-    private recetaService: RecetaService
+    private recetaService: RecetaService,
   ) { }
 
   ngOnInit() {
@@ -37,6 +36,14 @@ export class RecetaListaComponent implements OnInit {
         this.toastr.error("Error","Ha ocurrido un error. " + error.message)
       }
     });
+    const idReceta =  Number(localStorage.getItem('idreceta'));
+    if(idReceta != null){
+      this.recetaService.darReceta(idReceta).subscribe((receta) => {
+        this.prepararReceta(receta);
+        localStorage.removeItem('idreceta');
+      });
+    }
+    
   }
 
   crearReceta():void {
@@ -66,7 +73,8 @@ export class RecetaListaComponent implements OnInit {
   }
 
   prepararReceta(recetaElegida: Receta): void {
-    this.recetaElegida = recetaElegida
+    console.log(recetaElegida )
+    this.recetaElegida = recetaElegida;
   }
 
   caloriasPorcion(receta: Receta):number {

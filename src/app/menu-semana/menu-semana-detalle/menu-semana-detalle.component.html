@@ -1,0 +1,28 @@
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+      <th style="text-align: right;">Nombre del menú: </th>
+      <td>{{menuDetalle.nombre}}</td>
+    </tr>
+    <tr>
+      <th style="text-align: right;">Fecha inicial: </th>
+      <td>{{menuDetalle.fecha_inicial}}</td>
+    </tr>
+    <tr>
+      <th style="text-align: right;">Fecha final: </th>
+      <td>{{menuDetalle.fecha_final}}</td>
+    </tr>
+    <tr>
+      <th style="text-align: right;">Usuario: </th>
+      <td>{{menuDetalle.usuario.usuario}}</td>
+    </tr>
+    <tr >
+      <th style="text-align: right;">Recetas: </th>
+      <td >
+        <ul>
+          <li *ngFor="let receta of menuDetalle.recetas"><a (click)="recetaSeleccion(receta.id)">{{receta.nombre}}</a></li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>

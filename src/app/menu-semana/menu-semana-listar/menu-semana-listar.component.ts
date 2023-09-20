@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuSemanaService } from '../menu-semana.service';
 import { ToastrService } from 'ngx-toastr';
+import { MenuSemanaDetalle } from '../menu-semana';
 
 @Component({
   selector: 'app-menu-semana-listar',
@@ -11,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 export class MenuSemanaListarComponent {
 
   menus = [];
+  menuElegido: MenuSemanaDetalle;
   constructor(private routerPath: Router,
     private menuSemanaService: MenuSemanaService,
     private toastr: ToastrService) { }
@@ -38,5 +40,9 @@ export class MenuSemanaListarComponent {
 
   crearMenuSemana() {
     this.routerPath.navigate(['/menu-semana/crear']);
+  }
+
+  verDetalleMenuSemana(menu: MenuSemanaDetalle) {
+    this.menuElegido = menu;
   }
 }

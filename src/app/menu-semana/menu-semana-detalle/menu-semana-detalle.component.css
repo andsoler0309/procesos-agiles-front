@@ -1,0 +1,11 @@
+.menu-detalle {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .campo {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
