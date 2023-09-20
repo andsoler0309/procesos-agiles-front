@@ -1,6 +1,6 @@
 <app-encabezado></app-encabezado>
 <div class="row">
-    <div class="col col-9">
+    <div class="col col-8">
     <div class="container-table">
         <div class="header-tabla-menu">
                 Menus de la semana
@@ -31,6 +31,8 @@
                     <td>
                     <button [disabled]="false" type="button" class="btn btn-warning"><i class="bi bi-pencil"></i></button>&nbsp;
                     <button [disabled]="false" type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>&nbsp;
+                    <button [disabled]="false" type="button" class="btn btn-warning" (click)="verDetalleMenuSemana(menu)"><i class="bi bi-fire"></i></button>
+                    
                     </td>
                 </tr>
                 </tbody>
@@ -40,4 +42,14 @@
         </div>
         </div>
     </div>
+     <div class="col col-4">
+        <div class="card" style="width: 100%;" *ngIf="menuElegido">
+            <div class="card-header">
+                <h5 class="card-title">Detalle menu</h5>
+            </div>
+            <p class="card-text">
+                <app-menu-semana-detalle [menuDetalle]="menuElegido"></app-menu-semana-detalle>
+            </p>
+        </div>
+      </div>
 </div>
