@@ -5,14 +5,14 @@
     (ngSubmit)="!menuForm.invalid && crearMenu(menuForm.value)"
     >
     <div class="row">
-        <div class="col col-6">
+      <div class="col col-6">
       <div class="mb-3">
         <label for="nombre" class="form-label">Nombre</label>
-        <input 
+        <input
             formControlName="nombre"
-            type="text" 
-            class="form-control" 
-            id="nombre" 
+            type="text"
+            class="form-control"
+            id="nombre"
             placeholder="Nombre del menu">
         <div
           class="alert alert-danger alert-dismissible fade show"
@@ -24,51 +24,90 @@
           Contenido requerido
         </div>
       </div>
-  
+
       <div class="mb-3">
         <label for="fechaInicial" class="form-label">Fecha Inicial</label>
-        <input 
+        <input
             formControlName="fechaInicial"
-            type="date" 
-            class="form-control" 
+            type="date"
+            class="form-control"
             id="fechaInicial"
             (change)="calcularFechaFinal()">
       </div>
-  
+
       <div class="mb-3">
         <label for="fechaFinal" class="form-label">Fecha Final</label>
         <input
-            formControlName="fechaFinal" 
-            type="date" 
-            class="form-control" 
+            formControlName="fechaFinal"
+            type="date"
+            class="form-control"
             id="fechaFinal"
             readonly
             >
       </div>
-    </div>
+      </div>
     <div class="col col-6 form-group">
       <h6>Recetas</h6>
-      <ng-container formArrayName="recetas">
-        <ng-container *ngFor="let lineaForm of recetaSubForm.controls; let index = index">
-          <div [formGroupName]="index">
-            <div class="row">
-              <div class="col col-7">
-                <select
-                formControlName="id"
-                class="form-control"
-                >
-                    <option [ngValue]="null" disabled>Elegir receta</option>
-                    <option *ngFor="let receta of recetas" [ngValue]="receta.id">{{receta.nombre}} </option>
-                </select>
-              </div>
-              
-              <div class="col col-1">
-                <button type="button" class="btn btn-danger ml-3" (click)="eliminarIngrediente(index)"><i class="bi bi-trash"></i></button>
+      <div class="row">
+        <div class="row">
+          <div class="col col-7">Ingrediente</div>
+          <div class="col col-4">Cantidad</div>
+          <div class="col col-1"></div>
+        </div>
+
+        <ng-container formArrayName="recetas">
+          <ng-container *ngFor="let lineaForm of recetaSubForm.controls; let index = index">
+            <div [formGroupName]="index">
+              <div class="row">
+                <div class="col col-7">
+                  <select
+                  formControlName="id"
+                  class="form-control"
+                  >
+                      <option [ngValue]="null" disabled>Elegir receta</option>
+                      <option *ngFor="let receta of recetas" [ngValue]="receta.id">{{receta.nombre}} </option>
+                  </select>
+                  <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      *ngIf="
+                        lineaForm.get('id')!.hasError('required') &&
+                        lineaForm.get('id')!.touched
+                      "
+                      >
+                      Contenido requerido
+                      </div>
+
+                </div>
+
+                <div class="col col-4">
+                  <input
+                      novalidate
+                      id="numero_platos"
+                      type="number"
+                      class="form-control"
+                      formControlName="numero_platos"
+                      placeholder="Cantidad"
+                      />
+                      <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      *ngIf="
+                        lineaForm.get('numero_platos')!.hasError('required') &&
+                        lineaForm.get('numero_platos')!.touched
+                      "
+                    >
+                      Contenido requerido
+                    </div>
+                </div>
+
+
+                <div class="col col-1">
+                  <button type="button" class="btn btn-danger ml-3" (click)="eliminarReceta(index)"><i class="bi bi-trash"></i></button>
+                </div>
               </div>
             </div>
-          </div>
+          </ng-container>
         </ng-container>
-      </ng-container>
+      </div>
       <br/>
       <div class="row">
         <button type="button" class="btn btn-info ml-3" (click)="adicionarReceta()"><i class="bi bi-plus-circle"></i></button>
@@ -91,7 +130,7 @@
           </div>
       </div>
     </div>
-</div>
+    </div>
       <button type="submit" class="btn btn-primary" [disabled]="!menuForm.valid">Crear</button>&nbsp;
       <button type="button" class="btn btn-danger ml-3" (click)="cancelarMenu()">Cancelar</button>
     </form>
